@@ -1,17 +1,16 @@
-# SlackbotArcher
+# SlackbotShoresy
 
-![Archer Profile Pic](archer_head.png)
+![Shoresy Profile Pic](shoresy.jpg)
 
-SlackbotArcher comes equipped with the famous DANGER ZONE diatribe triggered when someone joins a channel or group.
-He also does phrasing, and "Can't or Won't?". Mention his name and see what he does!
+Liven up Slack with Shoresy! 
 
-![SlackbotArcher in action](slackbot-archer-in-action.png)
+<!-- ![SlackbotShoresy in action](slackbot-shoresy-in-action.png) --> 
 
 ## Installation
 Be sure to have npm and node installed, version `10.15.3` or later. 
 
 ```bash
-$ npm install -g https://github.com/camriera/SlackbotArcher.git
+$ npm install -g https://github.com/camriera/SlackbotShoresy.git
 ```
 Verify that the package installs properly. From your package root directory, enter the following to install your package globally.
 
@@ -19,9 +18,9 @@ Verify that the package installs properly. From your package root directory, ent
 $ npm install . -g
 ```
 
-## Running the SlackbotArcher
+## Running the SlackbotShoresy
 
-To run SlackbotArcher you must have an [API token(#getting-the-api-token-for-your-slack-channel) to authenticate the bot on your slack channel.
+To run SlackbotShoresy you must have an [API token(#getting-the-api-token-for-your-slack-channel) to authenticate the bot on your slack channel.
 Once you get it (instructions on the next paragraph) you just have to run:
 
 ```bash
@@ -30,19 +29,20 @@ BOT_API_KEY=secretapikey npm start
 
 ## Getting the API token for your Slack channel
 
-To allow the SlackbotArcher to connect your Slack channel you must provide him an API key. To retrieve it you need to add a new Bot in your Slack organization by visiting the following url: https://*yourorganization*.slack.com/services/new/bot, where *yourorganization* must be substituted with the name of your organization (e.g. https://*yourorganization*.slack.com/services/new/bot). Ensure you are logged to your Slack organization in your browser and you have the admin rights to add a new bot.
+To allow the SlackbotShoresy to connect your Slack channel you must provide him an API key. To retrieve it you need to add a new Bot in your Slack organization by visiting the following url: https://*yourorganization*.slack.com/services/new/bot, where *yourorganization* must be substituted with the name of your organization (e.g. https://*yourorganization*.slack.com/services/new/bot). Ensure you are logged to your Slack organization in your browser and you have the admin rights to add a new bot.
 
 You will find your API key under the field API Token, copy it in a safe place and get ready to use it.
 
 ## Configuration
 
-The SlackbotArcher is configurable through environment variables. There are several variable available:
+The SlackbotShoresy is configurable through environment variables. There are several variable available:
 
 | Environment variable | Description |
 |----------------------|-------------|
 | `BOT_API_KEY` | this variable is mandatory and must be used to specify the API token needed by the bot to connect to your Slack organization |
-| `BOT_NAME` | the name of your bot, it’s optional and it will default to archer |
+| `BOT_NAME` | the name of your bot, it’s optional and it will default to shoresy |
 | `BOT_DB_PATH` | the path to your DB that hosts responses, etc |
+| `BOT_USE_GIFS` | whether or not you want your bot to use GIFs as responses |
 
 
 ## Launching the bot from source

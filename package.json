@@ -1,38 +1,31 @@
 {
-  "name": "slackbot-archer",
-  "version": "1.1.0",
-  "description": "\"Literally the greatest secret agent EVER! And yes, that was the correct usage of literally. Now literally go and fetch me a bloody mary, 2 olives. I can't find Woodhouse anywhere!\"",
-  "main": "src/archerBot.js",
+  "name": "slackbot-shoresy",
+  "version": "1.0.0",
+  "description": "Give yer balls a tug.",
+  "main": "./src/shoresyBot.js",
+  "exports": "./src/shoresyBot.js",
+  "type": "module",
   "engines": {
-    "node": "10.15.x"
+    "node": "13.14.x"
   },
   "bin": {
-    "slackbot-archer": "node bin/bot.js"
+    "slackbot-shoresy": "node bin/bot.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/camriera/SlackbotArcher"
+    "url": "https://github.com/camriera/SlackbotShoresy"
   },
   "dependencies": {
-    "slackbots": "0.5.3",
-    "sqlite3": "4.2.0"
+    "compromise": "^13.3.1",
+    "slackbots": "^1.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node data/seedDb.js && node bin/bot.js",
+    "start": "node bin/bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "[\"Archer\"",
-    "\"Kenny",
-    "Loggins\"",
-    "\"Danger",
-    "Zone\"",
-    "\"Lana\"",
-    "\"Woodhouse\"",
-    "\"Mallory\"",
-    "\"phrasing\"",
-    "\"Pam\"]"
+    "['Shoresy', 'Letterkenny']"
   ],
   "author": {
     "name": "Cam",
