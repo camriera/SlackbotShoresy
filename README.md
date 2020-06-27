@@ -7,10 +7,10 @@ Liven up Slack with Shoresy!
 <!-- ![SlackbotShoresy in action](slackbot-shoresy-in-action.png) --> 
 
 ## Installation
-Be sure to have npm and node installed, version `10.15.3` or later. 
+Be sure to have npm and node installed, version `13.14.x` or later. 
 
 ```bash
-$ npm install -g https://github.com/camriera/SlackbotShoresy.git
+$ npm install https://github.com/camriera/SlackbotShoresy.git
 ```
 Verify that the package installs properly. From your package root directory, enter the following to install your package globally.
 
@@ -27,6 +27,8 @@ Once you get it (instructions on the next paragraph) you just have to run:
 BOT_API_KEY=secretapikey npm start
 ```
 
+Or create a `token.mjs` file add add it as `export const BOT_API_KEY = '<my-slack-api-token>'` just be sure **not to check that file into source control**!
+
 ## Getting the API token for your Slack channel
 
 To allow the SlackbotShoresy to connect your Slack channel you must provide him an API key. To retrieve it you need to add a new Bot in your Slack organization by visiting the following url: https://*yourorganization*.slack.com/services/new/bot, where *yourorganization* must be substituted with the name of your organization (e.g. https://*yourorganization*.slack.com/services/new/bot). Ensure you are logged to your Slack organization in your browser and you have the admin rights to add a new bot.
@@ -41,8 +43,6 @@ The SlackbotShoresy is configurable through environment variables. There are sev
 |----------------------|-------------|
 | `BOT_API_KEY` | this variable is mandatory and must be used to specify the API token needed by the bot to connect to your Slack organization |
 | `BOT_NAME` | the name of your bot, it’s optional and it will default to shoresy |
-| `BOT_DB_PATH` | the path to your DB that hosts responses, etc |
-| `BOT_USE_GIFS` | whether or not you want your bot to use GIFs as responses |
 
 
 ## Launching the bot from source
