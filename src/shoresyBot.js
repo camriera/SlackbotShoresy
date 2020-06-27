@@ -1,9 +1,7 @@
 'use strict';
 
 import * as fs from 'fs';
-//import nlp from 'compromise';
 import Bot from 'slackbots';
-//import natural from 'natural';
 
 function pickRandom(list) {
   var idx = Math.floor(Math.random() * list.length);
@@ -13,8 +11,6 @@ function pickRandom(list) {
 export class ShoresyBot extends Bot {  
   settings;
   user;
-  model;
-  //classifier;
   responses;
 
   /**
@@ -24,53 +20,14 @@ export class ShoresyBot extends Bot {
   constructor(settings) {
     super(settings);
     Object.assign(this, settings);
-    //const model = fs.readFileSync('./data/model.txt', 'utf-8');
-    //this.model = nlp(model);
     this.responses = JSON.parse(fs.readFileSync('./data/responses.json', 'utf-8'));
-    //this.classifier = new natural.BayesClassifier();
   }
 
   run() {
-    //this.runUsingBayesClassifier();
     this.on('start', this.onStart);
     this.on('message', this.onMessage);
     console.log('bootstrapped');
   }
-
-  test() {
-    this.pickFromMatches(this.model.if('Fuck you').text());
-    this.pickFromMatches(this.model.if('three things').text());
-  }
-
-  // runUsingBayesClassifier() {
-  //   this.classifier.addDocument('fuck you', 'fuckyou');
-  //   this.classifier.addDocument('fuck you Shoresy', 'fuckyou');
-  //   this.classifier.addDocument('shut up Shoresy', 'fuckyou');
-  //   this.classifier.addDocument('you\'re spare parts aren\'t you Shoresy?', 'fuckyou');
-
-  //   this.classifier.addDocument('yeah but Mr. Hockey', 'mrhockey');
-  //   this.classifier.addDocument('best all around player Gordie Howe', 'mrhockey');
-  //   this.classifier.addDocument('Gordie Howe Mr. Hockey', 'mrhockey');
-
-  //   this.classifier.addDocument('hi Shoresy', 'retort');
-  //   this.classifier.addDocument('hey Shoresy', 'retort');
-  //   this.classifier.addDocument('whats up, Shoresy?', 'retort');
-  //   this.classifier.addDocument('yo Shoresy', 'retort');
-
-  //   this.classifier.addDocument('whats going to happen Shoresy', 'threethings');
-  //   this.classifier.addDocument('yeah, what is going to happen?', 'threethings');
-
-  //   this.classifier.train();
-
-  //   this.classifier.events.on('trainedWithDocument', (obj) => {
-  //     console.log('training stats', obj);
-  //     console.log('classification training completed');
-  //     this.classifier.save('./data/classifier.json', (err) => console.error(err));
-  //     this.on('start', this.onStart);
-  //     this.on('message', this.onMessage);
-  //     console.log('bootstrapped');
-  //   });
-  // }
 
   pickFromMatches(matches) {
     if (matches) {
@@ -100,14 +57,6 @@ export class ShoresyBot extends Bot {
     if (this.isChatMessage(message) && typeof message.channel === 'string' && /C|G|D/.test(message.channel[0]) && !this.isFromBot(message)) {
       console.log(message);
 
-      // const classification = this.classifier.classify(message.text);
-      // if (this.responses[classification]) {
-      //   this.postMessage(message, pickRandom(this.responses[classification]));
-      // } else {
-      //   console.error('Unknown classification found!', classification);
-      // }
-
-      //TODO work on triggers and response patterns, compromise might not be the right library
       switch (true) {
         case /fuck.+you.+shoresy/gi.test(message.text):
           return this.postMessage(message, pickRandom(this.responses['fuckyou'])

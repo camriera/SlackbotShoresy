@@ -16,8 +16,6 @@
     "url": "https://github.com/camriera/SlackbotShoresy"
   },
   "dependencies": {
-    "compromise": "^13.3.1",
-    "natural": "^2.1.5",
     "slackbots": "^1.2.0"
   },
   "devDependencies": {},
