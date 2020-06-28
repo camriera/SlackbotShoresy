@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import Bot from 'slackbots';
 
 function pickRandom(list) {
-  var idx = Math.floor(Math.random() * list.length);
+  const idx = Math.floor(Math.random() * list.length);
   return list[idx];
 }
 
@@ -15,7 +15,7 @@ export class ShoresyBot extends Bot {
 
   /**
    * ShoresyBot Constructor
-   * @param {token, name, useGIFs} settings
+   * @param {token, name} settings
    */
   constructor(settings) {
     super(settings);
@@ -27,13 +27,6 @@ export class ShoresyBot extends Bot {
     this.on('start', this.onStart);
     this.on('message', this.onMessage);
     console.log('bootstrapped');
-  }
-
-  pickFromMatches(matches) {
-    if (matches) {
-      const responses = matches.split(/\r?\n/).filter(v => !!v);
-      return pickRandom(responses);
-    }
   }
 
   /**
@@ -67,7 +60,9 @@ export class ShoresyBot extends Bot {
         case /gordie.+howe|mr.+hockey/gi.test(message.text):
           return this.postMessage(message, pickRandom(this.responses['mrhockey']));  
         case /shoresy/gi.test(message.text):
-          return this.postMessage(message, pickRandom(this.responses['retort']));
+          return this.postMessage(message, pickRandom(this.responses['retort'])
+            .replace('#Name', this.getUserName(message.user))
+            .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
       }
     }
   }
