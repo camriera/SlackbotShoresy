@@ -10,7 +10,7 @@ Liven up Slack with Shoresy!
 Be sure to have npm and node installed, version `13.14.x` or later. 
 
 ```bash
-$ npm install https://github.com/camriera/SlackbotShoresy.git
+$ npm install -g https://github.com/camriera/SlackbotShoresy.git
 ```
 Verify that the package installs properly. From your package root directory, enter the following to install your package globally.
 
@@ -18,7 +18,7 @@ Verify that the package installs properly. From your package root directory, ent
 $ npm install . -g
 ```
 
-## Running the SlackbotShoresy
+## Running the SlackbotShoresy Locally
 
 To run SlackbotShoresy you must have an [API token(#getting-the-api-token-for-your-slack-channel) to authenticate the bot on your slack channel.
 Once you get it (instructions on the next paragraph) you just have to run:
@@ -26,8 +26,6 @@ Once you get it (instructions on the next paragraph) you just have to run:
 ```bash
 BOT_API_KEY=secretapikey npm start
 ```
-
-Or create a `token.mjs` file add add it as `export const BOT_API_KEY = '<my-slack-api-token>'` just be sure **not to check that file into source control**!
 
 ## Getting the API token for your Slack channel
 
@@ -50,10 +48,10 @@ The SlackbotShoresy is configurable through environment variables. There are sev
 If you downloaded the source code of the bot you can run it using NPM with:
 
 ```bash
-$ npm start
+$ npm run start
 ```
 
-Don't forget to set your `BOT_API_KEY` environment variable bedore doing so. Alternatively you can also create a file called `token.js` in the root folder and put your token there (you can use the `token.js.example` file as a reference).
+Don't forget to set your `BOT_API_KEY` environment variable bedore doing so. Alternatively you can also create a file called `token.mjs` in the root folder and put your token there (you can use the `token.mjs.example` file as a reference).
 
 ## Heroku Cloud Hosting
 
