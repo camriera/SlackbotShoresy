@@ -38,7 +38,8 @@ export class ShoresyBot extends Bot {
     console.log('Shoresy bot:\n', this.user);
 
     //let people know bot is LIVE!
-    this.broadcast(pickRandom(['Give yer balls a tug. Titfuckers!', 'Fight me, see what happens.']));
+    //TODO figure out why DYNO instance reboots causing this to trigger wayyy to often
+    //this.broadcast(pickRandom(['Give yer balls a tug. Titfuckers!', 'Fight me, see what happens.']));
   }
 
   /**
@@ -48,6 +49,7 @@ export class ShoresyBot extends Bot {
    */
   onMessage = (message) => {
     if (this.isChatMessage(message) && typeof message.channel === 'string' && /C|G|D/.test(message.channel[0]) && !this.isFromBot(message)) {
+      //TODO add ability to define log level at the ENV and turn this to (debug|info|trace)
       console.log(message);
 
       switch (true) {
