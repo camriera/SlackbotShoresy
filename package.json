@@ -2,14 +2,14 @@
   "name": "slackbot-shoresy",
   "version": "1.0.0",
   "description": "Give yer balls a tug.",
-  "main": "./src/shoresyBot.js",
-  "exports": "./src/shoresyBot.js",
+  "main": "./src/shoresy-bot.js",
+  "exports": "./src/shoresy-bot.js",
   "type": "module",
   "engines": {
     "node": "13.14.x"
   },
   "bin": {
-    "slackbot-shoresy": "node bin/bot.js"
+    "slackbot-shoresy": "node --experimental-modules src/main.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node bin/bot.js",
+    "start": "node --experimental-modules src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

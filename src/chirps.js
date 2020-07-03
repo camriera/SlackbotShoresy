@@ -1,5 +1,5 @@
-{
-  "fuckyou": [
+export const Chirps = {
+  fuckyou: [
     "Fuck you, #Name! Fight me, see what happens.",
     "Fuck you, #Name! Fight me, see what happens.",
     "Fuck you, #Name! Fight me, see what happens.",
@@ -22,14 +22,17 @@
     "Fuck you, #Name. I woke up to your mom ripping dick-dingers off my foreskin, tell her to keep her hands off my scoops.",
     "#Name, I made an oopsie, can you tell your mom to pick up #Name2’s mom on the way over to my place? I double booked them by mistake, you fuckin’ loser.",
     "Fuck you, #Name, tell your mom to give me a timeout. The last time I tried that she threatened to take a header on me into and empty pool at the Quality Suites.",
-    "Fuck you, #Name. Your mom sneaky gushed so hard she bucked me off the water bed last night don't tell her I was thinking of #Name2's mom the entire time."
+    "Fuck you, #Name. Your mom sneaky gushed so hard she bucked me off the water bed last night don't tell her I was thinking of #Name2's mom the entire time.",
+    "Fuck you, #Name, I talked your mom into a three-way with our midwife and she gassed us both out of the room. I'm fuckin' humiliated!",
+    "Fuck you, #Name, your mom wants to name the baby after the place it was conceived. Can't wait to meet Martha's Vineyard Shore.",
+    "Fuck you, #Name! Your mom's in her first trimester and already bitching about baby brain. Had to tell her she's been dumber than #Name2's mom since the genesis!",
   ],
-  "threethings": [
+  threethings: [
     "Three things: I hit you, you hit the pavement, and I jerk off on your driver’s side door handle.",
     "Three things: I hit you, you hit the pavement, ambulance hits 60.",
     "Three things: I hit you, you hit the pavement, I fuck your mom again."
   ],
-  "retort": [
+  chirp: [
     "Titfucker.",
     "Give yer balls a tug.",
     "Give yer balls a tug, titfucker.",
@@ -46,14 +49,18 @@
     "#Name, I made an oopsie, can you tell your mom to pick up #Name2’s mom on the way over to my place? I double booked them by mistake, you fuckin’ loser.",
     "Fuck, you could cut the sexual tension over here with a knife. Give yer balls a tug, titfucker.",
     "https://gfycat.com/snoopywellinformedleech",
-    "https://media.giphy.com/media/MEope7bKKdDdFjnlS5/giphy.gif"
+    "https://media.giphy.com/media/MEope7bKKdDdFjnlS5/giphy.gif",
+    "First puck of the campaign, boys. Fuckin' get involved!",
+    "Make yourselves useful, grab me a bag of dill picklers!",
+    "The fuck you looking at, ya titfucker? Give yer balls a tug!",
+    "Great day for competitive men's hockey, eh. What's women's hockey like? Same things, less competitive or what?"
   ],
-  "mrhockey": [
+  mrhockey: [
     "Suck my Mr. Cocky, ya fucking loser.",
     "Gretz is the best player in the history of the show. Give yer balls a tug.",
     "Gretz holds his share of 61 records in the show, you piece of shit. Dont nickel and dime The Great One!"
   ],
-  "catcall": [
+  catcall: [
     "Look at that fucking masterpiece boys.",
     "Who brought the fucking rocket boys?",
     "Look at those legs go up and make a complete fucking ass out of themselves.",

@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-'use strict';
 
-import { ShoresyBot } from 'slackbot-shoresy';
-//import { BOT_API_KEY } from '../token.mjs';
+import { ShoresyBot } from './shoresy-bot.js';
+//import { BOT_API_KEY } from '../token.js';
 
 try {
   /**

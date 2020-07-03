@@ -1,17 +1,18 @@
-'use strict';
-
-import * as fs from 'fs';
 import Bot from 'slackbots';
+import { Chirps } from './chirps.js';
 
 function pickRandom(list) {
   const idx = Math.floor(Math.random() * list.length);
   return list[idx];
 }
 
+function chance(percentage) {
+  return Math.random() * 100 <= percentage;
+}
+
 export class ShoresyBot extends Bot {  
   settings;
   user;
-  responses;
 
   /**
    * ShoresyBot Constructor
@@ -20,7 +21,6 @@ export class ShoresyBot extends Bot {
   constructor(settings) {
     super(settings);
     Object.assign(this, settings);
-    this.responses = JSON.parse(fs.readFileSync('./data/responses.json', 'utf-8'));
   }
 
   run() {
@@ -39,7 +39,7 @@ export class ShoresyBot extends Bot {
 
     //let people know bot is LIVE!
     //TODO figure out why DYNO instance reboots causing this to trigger wayyy to often
-    //this.broadcast(pickRandom(['Give yer balls a tug. Titfuckers!', 'Fight me, see what happens.']));
+    this.broadcast(pickRandom(['Give yer balls a tug. Titfuckers!', 'Fight me, see what happens.']), 10);
   }
 
   /**
@@ -52,17 +52,18 @@ export class ShoresyBot extends Bot {
       //TODO add ability to define log level at the ENV and turn this to (debug|info|trace)
       console.log(message);
 
+      //TODO update matching logic
       switch (true) {
         case /fuck.+you.+shoresy/gi.test(message.text):
-          return this.postMessage(message, pickRandom(this.responses['fuckyou'])
+          return this.postMessage(message, pickRandom(Chirps.fuckyou)
             .replace('#Name', this.getUserName(message.user))
             .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
         case /what'?s?.+happen/gi.test(message.text):
-          return this.postMessage(message, pickRandom(this.responses['threethings']));
+          return this.postMessage(message, pickRandom(Chirps.threethings));
         case /gordie.+howe|mr.+hockey/gi.test(message.text):
-          return this.postMessage(message, pickRandom(this.responses['mrhockey']));  
+          return this.postMessage(message, pickRandom(Chirps.mrhockey));  
         case /shoresy/gi.test(message.text):
-          return this.postMessage(message, pickRandom(this.responses['retort'])
+          return this.postMessage(message, pickRandom(Chirps.chirp)
             .replace('#Name', this.getUserName(message.user))
             .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
       }
@@ -243,10 +244,10 @@ export class ShoresyBot extends Bot {
   /**
    * Sends message to all channels/groups Bot is in
    */
-  broadcast(msg) {
+  broadcast(msg, chanceVal = 100) {
     if (this.channels) {
       for (const channel of this.channels) {
-        if (channel.is_member) { 
+        if (channel.is_member && chance(chanceVal)) { 
           this.postMessage({type: 'message', channel: channel.id}, msg);
         }
       }
@@ -254,7 +255,7 @@ export class ShoresyBot extends Bot {
     if (this.groups){
       for (const group of this.groups) {
         console.log(group);
-        if (group.is_group && group.members.some(member => member === this.user.id)){
+        if (group.is_group && group.members.some(member => member === this.user.id) && chance(chanceVal)){
           this.postMessage({type: 'message', channel: group.id}, msg);
         }
       }
