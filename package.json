@@ -16,6 +16,7 @@
     "url": "https://github.com/camriera/SlackbotShoresy"
   },
   "dependencies": {
+    "gender-detection": "^0.1.0",
     "slackbots": "^1.2.0"
   },
   "devDependencies": {},

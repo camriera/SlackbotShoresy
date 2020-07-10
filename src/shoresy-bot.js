@@ -1,5 +1,7 @@
 import Bot from 'slackbots';
 import { Chirps } from './chirps.js';
+import 'gender-detection';
+import gender from 'gender-detection';
 
 function pickRandom(list) {
   const idx = Math.floor(Math.random() * list.length);
@@ -34,12 +36,16 @@ export class ShoresyBot extends Bot {
    * @private
    */
   onStart = () => {
-    this.user = this.users.find((user) => user.name === this.name);
-    console.log('Shoresy bot:\n', this.user);
+    try {
+      this.user = this.users.find((user) => user.name === this.name);
+      console.log('Shoresy bot:\n', this.user);
 
-    //let people know bot is LIVE!
-    //TODO figure out why DYNO instance reboots causing this to trigger wayyy to often
-    this.broadcast(pickRandom(['Give yer balls a tug. Titfuckers!', 'Fight me, see what happens.']), 10);
+      //let people know bot is LIVE!
+      //TODO figure out why DYNO instance reboots causing this to trigger wayyy to often
+      this.broadcast(pickRandom(['Give yer balls a tug. Titfuckers!', 'Fight me, see what happens.']), 10);
+    } catch (err) {
+      console.error('[onStart] error occurred', err);
+    }
   }
 
   /**
@@ -48,25 +54,41 @@ export class ShoresyBot extends Bot {
    * @private
    */
   onMessage = (message) => {
-    if (this.isChatMessage(message) && typeof message.channel === 'string' && /C|G|D/.test(message.channel[0]) && !this.isFromBot(message)) {
-      //TODO add ability to define log level at the ENV and turn this to (debug|info|trace)
-      console.log(message);
-
-      //TODO update matching logic
-      switch (true) {
-        case /fuck.+you.+shoresy/gi.test(message.text):
-          return this.postMessage(message, pickRandom(Chirps.fuckyou)
-            .replace('#Name', this.getUserName(message.user))
-            .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
-        case /what'?s?.+happen/gi.test(message.text):
-          return this.postMessage(message, pickRandom(Chirps.threethings));
-        case /gordie.+howe|mr.+hockey/gi.test(message.text):
-          return this.postMessage(message, pickRandom(Chirps.mrhockey));  
-        case /shoresy/gi.test(message.text):
-          return this.postMessage(message, pickRandom(Chirps.chirp)
-            .replace('#Name', this.getUserName(message.user))
-            .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
+    try {
+      if (this.isChatMessage(message) && typeof message.channel === 'string' && /C|G|D/.test(message.channel[0]) && !this.isFromBot(message)) {
+        //TODO add ability to define log level at the ENV and turn this to (debug|info|trace)
+        console.log(message);
+  
+        //if Channel Or Group Join
+        if (this.isChannelOrGroupJoin(message)) {
+          const user = this.getUserById(message.user);
+          const name = user && user.profile && user.profile.first_name || user.real_name || user.name || user.profile.displayName;
+  
+          //Cat call ladies
+          if (gender.detect(name, 'en') === 'female') {
+            return this.postMessage(message, pickRandom(Chirps.catcall).replace('#Name', this.getUserName(message.user)));
+          }
+  
+        } else {
+          //Handle normal message
+          switch (true) {
+            case /fuck.+you.+shoresy/gi.test(message.text):
+              return this.postMessage(message, pickRandom(Chirps.fuckyou)
+                .replace('#Name', this.getUserName(message.user))
+                .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
+            case /what'?s?.+happen/gi.test(message.text):
+              return this.postMessage(message, pickRandom(Chirps.threethings));
+            case /gordie.+howe|mr.+hockey/gi.test(message.text):
+              return this.postMessage(message, pickRandom(Chirps.mrhockey));  
+            case /shoresy/gi.test(message.text):
+              return this.postMessage(message, pickRandom(Chirps.chirp)
+                .replace('#Name', this.getUserName(message.user))
+                .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
+          }
+        }
       }
+    } catch (err) {
+      console.error('[onMessage] error occurred', err);
     }
   }
 
@@ -209,7 +231,7 @@ export class ShoresyBot extends Bot {
    * @private
    */
   isChannelOrGroupJoin(message) {
-    return this.isChannelJoin(message) || this._isGroupJoin(message);
+    return this.isChannelJoin(message) || this.isGroupJoin(message);
   }
 
   /**
