@@ -58,13 +58,20 @@ export const Chirps = {
   mrhockey: [
     "Suck my Mr. Cocky, ya fucking loser.",
     "Gretz is the best player in the history of the show. Give yer balls a tug.",
-    "Gretz holds his share of 61 records in the show, you piece of shit. Dont nickel and dime The Great One!"
+    "Gretz holds his share of 61 records in the show, you piece of shit. Don't nickel and dime the Great One!"
   ],
   catcall: [
     "Look at that fucking masterpiece boys.",
     "Who brought the fucking rocket boys?",
     "Look at those legs go up and make a complete fucking ass out of themselves.",
-    "Holy fuck would I love to get sticky with her.",
-    "Fuck she looks cold, I'll show her my warm front."
-  ]
+    "Holy fuck would I love to get sticky with #Name.",
+    "Fuck #Name looks cold, I'll show her my warm front.",
+    "Hey, what's your favorite kind of pizza, Cuteness? Mine's pizza ass.",
+    "Hey #Name, you look like that broad from The Hunger Games. I'm gonna call you Cuteness Everdeen. You like edamame?",
+  ],
+  //TODO add more chirps from the shoresy v girls hocky scenes
+  ladychirp: [
+    `We should change our Facebook status to "It's complicated".`,
+    "You skate like a fuckin' girl, birdcage. No, you're not. Are you really? Holy fuck.",
+  ],
 }
