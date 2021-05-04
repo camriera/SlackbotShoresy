@@ -72,14 +72,22 @@ export class ShoresyBot extends Bot {
         } else {
           //Handle normal message
           switch (true) {
+
+
             case /fuck.+you.+shoresy/gi.test(message.text):
               return this.postMessage(message, pickRandom(Chirps.fuckyou)
                 .replace('#Name', this.getUserName(message.user))
                 .replace('#Name2', this.getRandomChannelOrGroupUserName(message.channel, (user) => message.user !== user.id && user.id !== this.user.id && user.name !== 'slackbot')));
+
+
             case /what'?s?.+happen/gi.test(message.text):
               return this.postMessage(message, pickRandom(Chirps.threethings));
+
+
             case /gordie.+howe|mr.+hockey/gi.test(message.text):
               return this.postMessage(message, pickRandom(Chirps.mrhockey));  
+
+
             case /shoresy/gi.test(message.text):
               return this.postMessage(message, pickRandom(Chirps.chirp)
                 .replace('#Name', this.getUserName(message.user))
@@ -97,7 +105,7 @@ export class ShoresyBot extends Bot {
    * @param channelId 
    */
   getRandomChannelOrGroupUserName(channelOrGroupId, predicateFn) {
-    const users = channelOrGroupId[0] === 'G' ? this.getGroupUsers(channelOrGroupId, predicateFn) : this.getChannelUsers(channelId, predicateFn);
+    const users = channelOrGroupId[0] === 'G' ? this.getGroupUsers(channelOrGroupId, predicateFn) : this.getChannelUsers(channelOrGroupId, predicateFn);
     if (users.length > 0) {
       const user = pickRandom(users);
       return this.getUserName(user.id);
