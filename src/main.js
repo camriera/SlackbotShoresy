@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { ShoresyBot } from './shoresy-bot.js';
-//import { BOT_API_KEY } from '../token.js';
 
 try {
   /**

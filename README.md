@@ -51,7 +51,7 @@ If you downloaded the source code of the bot you can run it using NPM with:
 $ npm run start
 ```
 
-Don't forget to set your `BOT_API_KEY` environment variable bedore doing so. Alternatively you can also create a file called `token.mjs` in the root folder and put your token there (you can use the `token.mjs.example` file as a reference).
+Don't forget to set your `BOT_API_KEY` environment variable bedore doing so. 
 
 ## Heroku Cloud Hosting
 
