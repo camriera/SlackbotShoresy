@@ -26,6 +26,10 @@ export const Chirps = {
     "Fuck you, #Name, I talked your mom into a three-way with our midwife and she gassed us both out of the room. I'm fuckin' humiliated!",
     "Fuck you, #Name, your mom wants to name the baby after the place it was conceived. Can't wait to meet Martha's Vineyard Shore.",
     "Fuck you, #Name! Your mom's in her first trimester and already bitching about baby brain. Had to tell her she's been dumber than #Name2's mom since the genesis!",
+    "Fuck you, #Name. Your mom got refused entry to that party for coming in blackface, glad I came in blackface before we left her bungalow.",
+    "Fuck you, #Name. I dumped your mom and she sent me flowers like I'm a fuckin’ broad!",
+    "Fuck you #Name, your mom said she'd do anything to get me back, so I've got her runnin’ around town on my Pokemon Go.",
+    "Fuck you #Name. How do you think I feel I gotta fuck you mom one more time because she's still got my Gameboy Color."
   ],
   threethings: [
     "Three things: I hit you, you hit the pavement, and I jerk off on your driver’s side door handle.",
