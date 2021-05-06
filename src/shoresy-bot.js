@@ -111,7 +111,7 @@ export class ShoresyBot extends Bot {
       return this.getUserName(user.id);
     } 
     //fallback to Jonesy || Reilly as name2
-    return pickRandom(['Jonesy, Reilly']);
+    return pickRandom(['Jonesy', 'Reilly']);
   }
 
   /**
